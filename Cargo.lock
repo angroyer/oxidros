@@ -2138,7 +2138,7 @@ dependencies = [
 
 [[package]]
 name = "oxidros-rcl"
-version = "0.5.9"
+version = "0.5.10"
 dependencies = [
  "crossbeam-channel",
  "futures-util",
@@ -2163,7 +2163,7 @@ dependencies = [
 
 [[package]]
 name = "oxidros-wrapper"
-version = "0.5.9"
+version = "0.5.10"
 dependencies = [
  "futures-core",
  "futures-util",
@@ -2802,7 +2802,7 @@ dependencies = [
 
 [[package]]
 name = "ros2msg"
-version = "0.5.9"
+version = "0.5.10"
 dependencies = [
  "clap",
  "heck",
