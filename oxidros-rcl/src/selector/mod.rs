@@ -963,7 +963,7 @@ impl Selector {
             entities.events,
         )?;
         // set subscriptions
-        for (_, h) in self.subscriptions.iter() {
+        for h in self.subscriptions.values() {
             guard.rcl_wait_set_add_subscription(
                 &mut self.wait_set,
                 h.event.subscription.as_ref(),
@@ -971,7 +971,7 @@ impl Selector {
             )?;
         }
         // set guard conditions
-        for (_, h) in self.cond.iter() {
+        for h in self.cond.values() {
             guard.rcl_wait_set_add_guard_condition(
                 &mut self.wait_set,
                 h.event.cond.as_ref(),
@@ -979,15 +979,15 @@ impl Selector {
             )?;
         }
         // set clients
-        for (_, h) in self.clients.iter() {
+        for h in self.clients.values() {
             guard.rcl_wait_set_add_client(&mut self.wait_set, &h.event.client, null_mut())?;
         }
         // set services
-        for (_, h) in self.services.iter() {
+        for h in self.services.values() {
             guard.rcl_wait_set_add_service(&mut self.wait_set, &h.event.service, null_mut())?;
         }
         // set action clients
-        for (_, h) in self.action_clients.iter() {
+        for h in self.action_clients.values() {
             guard.rcl_action_wait_set_add_action_client(
                 &mut self.wait_set,
                 h.client,
@@ -996,7 +996,7 @@ impl Selector {
             )?;
         }
         // set action servers
-        for (s, _v) in self.action_servers.iter() {
+        for s in self.action_servers.keys() {
             guard.rcl_action_wait_set_add_action_server(&mut self.wait_set, *s, null_mut())?;
         }
         Ok(())

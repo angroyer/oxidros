@@ -721,7 +721,7 @@ fn add_srv_list(
 
             let guard = params.write();
 
-            for (k, _v) in guard.params.iter() {
+            for k in guard.params.keys() {
                 let cnt = k.as_bytes().iter().filter(|c| **c == separator).count();
                 let get_all = prefixes.is_empty() && req.depth == 0 || cnt < req.depth as usize;
 

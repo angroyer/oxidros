@@ -149,25 +149,25 @@ fn select(context: Arc<Context>, guard: GuardCondition, rx: Receiver<Command>) -
         }
 
         if selector.wait().is_err() && signal_handler::is_halt() {
-            for (_, h) in selector.subscriptions.iter_mut() {
+            for h in selector.subscriptions.values_mut() {
                 if let Some(handler) = &mut h.handler {
                     (*handler)();
                 }
             }
 
-            for (_, h) in selector.services.iter_mut() {
+            for h in selector.services.values_mut() {
                 if let Some(handler) = &mut h.handler {
                     (*handler)();
                 }
             }
 
-            for (_, h) in selector.clients.iter_mut() {
+            for h in selector.clients.values_mut() {
                 if let Some(handler) = &mut h.handler {
                     (*handler)();
                 }
             }
 
-            for (_, h) in selector.cond.iter_mut() {
+            for h in selector.cond.values_mut() {
                 if let Some(handler) = &mut h.handler {
                     (*handler)();
                 }

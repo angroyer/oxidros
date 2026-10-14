@@ -599,7 +599,7 @@ int32[] partial_sequence
         let display_string = spec.to_string();
 
         assert!(display_string.contains("test_msgs/Fibonacci"));
-        assert!(display_string.matches("---").count() == 2);
+        assert_eq!(display_string.matches("---").count(), 2);
         assert!(display_string.contains("int32 order"));
         assert!(display_string.contains("int32[] sequence"));
         assert!(display_string.contains("int32[] partial_sequence"));

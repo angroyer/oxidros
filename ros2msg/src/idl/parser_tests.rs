@@ -195,7 +195,7 @@ mod tests {
         assert_eq!(service.request_message.structure.members.len(), 1);
         assert_eq!(service.response_message.structure.members.len(), 1);
         assert_eq!(service.event_message.structure.members.len(), 1);
-        assert!(idl_file.content.get_messages().is_empty());
+        assert_eq!(idl_file.content.get_messages().len(), 0);
     }
 
     #[test]
@@ -267,6 +267,6 @@ mod tests {
         // and not returned as separate services
         let services = idl_file.content.get_services();
         assert_eq!(services.len(), 0);
-        assert!(idl_file.content.get_messages().is_empty());
+        assert_eq!(idl_file.content.get_messages().len(), 0);
     }
 }
