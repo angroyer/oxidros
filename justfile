@@ -45,6 +45,16 @@ doc:
 clean:
     cargo clean
 
+# Bump workspace crate versions without pushing the generated commit and tags.
+# Examples: `just bump`, `just bump minor`, `just bump patch --yes`
+bump BUMP="patch" *ARGS:
+    cargo ws version {{BUMP}} --no-git-push {{ARGS}}
+
+# Publish already-versioned crates without changing their versions.
+# Examples: `just publish --dry-run`, `just publish --registry crates-io`
+publish *ARGS:
+    cargo ws publish --publish-as-is --locked {{ARGS}}
+
 # Run IDL parser conformance tests against ROS2
 idl-conformance *ARGS:
     ./scripts/run_idl_conformance.sh {{ARGS}}
